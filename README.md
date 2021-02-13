@@ -2,4 +2,20 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 A Flask based API backend was added in the *api* directory.
 
-Read my [tutorial](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project) on how to create Flask + React combined projects.
+## Setup
+If on Linux/MacOS:
+```
+chmod +x setup.sh
+./setup.sh
+```
+Otherwise, follow code in Bash script.
+
+Afterwards, to start the app, in two different terminals:
+```
+# Start the React server on localhost:3000
+npm start
+# Start the Flask server on localhost:5000
+npm start-api
+```
+
+
