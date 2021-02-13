@@ -38,7 +38,7 @@ function App() {
                 <p>The current time is {currentTime}.</p>
             </Route>
             <Route path="/page2">
-                <p>This is page 3!</p>
+                <p>This is page 2!</p>
             </Route>
           </Switch>
         </BrowserRouter>
