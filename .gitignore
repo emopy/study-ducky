@@ -239,3 +239,4 @@ pip-selfcheck.json
 
 api/venv/*
 node_modules
+api/__pycache__
