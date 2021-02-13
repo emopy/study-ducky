@@ -1,8 +1,9 @@
 import time
-from flask import Flask
+from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
-
+CORS(app)
 
 @app.errorhandler(404)
 def not_found(e):
@@ -18,6 +19,15 @@ def index():
 def get_current_time():
     return {'time': time.time()}
 
-@app.route('/api/uploadfile')
+@app.route('/api/uploadfile', methods=['POST'])
 def temp():
-    return {'hi'}
+    data = dict()
+    for key, val in request.form.items():
+        data[key] = val
+
+    if('file' not in request.files):
+        return {"status": "ERR_MISSING_FILE"}
+    f = request.files['file']
+    data['file'] = f
+
+    return {'hi': 'hi'}
