@@ -1,11 +1,12 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import Container from '../components/container'
 import Layout from '../templates/layout'
 import Emoji from '../components/emoji'
 import Navbar from '../components/navbar'
 import FileDetails from '../components/file-details'
+import PDFViewer from '../components/pdfviewer'
 
 import FadeIn from 'react-fade-in';
 import bgImg from '../assets/bg-2.png'
@@ -28,7 +29,6 @@ class Details extends React.Component {
         if(!data) {
           return <Redirect to="/explore" />
         }
-
         return (
             <Layout>
                 <div id="detailsPage" style={{
@@ -42,6 +42,17 @@ class Details extends React.Component {
                 <Container><FadeIn>
 
                 <h1><Emoji symbol="✏️"/> {data.title}</h1><br/>
+
+                <div style={{height:'auto', overflow:'hidden'}}>
+                  <a style={{margin: "auto"}}
+                        to={data.pdfurl}
+                        className="pdf-anchor d-flex justify-content-center pdf-preview"
+                  >
+                    <PDFViewer
+                      pdfURL={data.pdfurl}
+                    />
+                  </a>
+                </div>
 
                 <FileDetails
                     title={data.title}
