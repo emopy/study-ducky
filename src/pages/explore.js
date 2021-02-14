@@ -11,6 +11,7 @@ export default function ExplorePage() {
   return (
     <Layout>
         <Container>
+        <div style={{height: '60px'}}></div>
         <h2>Explore Notes <Emoji>✏️</Emoji></h2>
         <SearchInput placeholder="Search for notes..." 
             height={40} 
@@ -21,17 +22,39 @@ export default function ExplorePage() {
           Default
         </Button>
 
-        <div style={{height: '80px'}}></div>
+        <div style={{height: '20px'}}></div>
 
         <FileCard 
-            title="title one" 
+            title="title here" 
             description="lorem ipsum"
         />
 
         <FileCard 
-            title="title one" 
+            title="title here" 
             description="lorem ipsum"
         />
+
+        <FileCard 
+            title="title here" 
+            description="lorem ipsum"
+        />
+
+        <FileCard 
+            title="title here" 
+            description="lorem ipsum"
+        />
+
+        <FileCard 
+            title="title here" 
+            description="lorem ipsum"
+        />
+
+        <FileCard 
+            title="title here" 
+            description="lorem ipsum"
+        />
+
+        <div style={{height: '100px'}}></div>
         
     </Container>
     </Layout>

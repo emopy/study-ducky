@@ -4,6 +4,8 @@ import logo from './logo.svg';
 
 import SplashPage from './pages/splash'
 import ExplorePage from './pages/explore'
+import AddPage from './pages/add'
+
 
 import UploadNotesForm from "./components/UploadNotesForm";
 import UploadLecturesForm from "./components/UploadLecturesForm";
@@ -27,6 +29,9 @@ function App() {
             </Route>
             <Route path="/explore">
                 <ExplorePage/>
+            </Route>
+            <Route path="/add">
+                <AddPage />
             </Route>
             <Route path="/upload-notes">
               <UploadNotesForm />
