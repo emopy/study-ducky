@@ -15,22 +15,29 @@ function App() {
 
   return (
     <div className="App">
+    
       <header className="App-header">
         <BrowserRouter>
-          {/* <div>
-            <Link className="App-link" to="/">Home</Link>
-            &nbsp;|&nbsp;
-            <Link className="App-link" to="/page2">Page2</Link>
-          </div> */}
           <Switch>
             <Route exact path="/">
-                <p>home</p>
                 <SplashPage/>
             </Route>
             <Route path="/explore">
+                <div style={{height: '60px'}}></div>
+                {/* <div>
+                    <Link className="App-link" to="/">Home</Link>
+                    &nbsp;| &nbsp;
+                    <Link className="App-link" to="/explore">Explore</Link>
+                </div> */}
                 <ExplorePage/>
             </Route>
             <Route path="/add">
+                <div style={{height: '60px'}}></div>
+                {/* <div>
+                    <Link className="App-link" to="/">Home</Link>
+                    &nbsp;| &nbsp;
+                    <Link className="App-link" to="/explore">Explore</Link>
+                </div> */}
                 <AddPage />
             </Route>
             <Route path="/upload-notes">

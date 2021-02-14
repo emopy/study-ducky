@@ -10,7 +10,6 @@ export default function AddPage() {
   return (
     <Layout>
         <Container>
-        <div style={{height: '60px'}}></div>
         <h2>Upload New File <Emoji>✏️</Emoji></h2>
         
         <div style={{textAlign: 'center', alignItems: 'center', width: '100%'}}>
