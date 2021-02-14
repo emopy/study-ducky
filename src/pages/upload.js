@@ -28,7 +28,7 @@ export default function UploadPage() {
         <Container><FadeIn>
 
         <h1>Upload Files <Emoji symbol="✏️"/></h1><br/>
-        
+
         <p>hi</p>
         <UploadNotesForm/>
         </FadeIn></Container>
