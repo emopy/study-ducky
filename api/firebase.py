@@ -21,7 +21,7 @@ def get(collection):
 
     data = list()
     for doc in notes:
-        print(f'DocId: {doc.id} => Data: {doc.to_dict()}')
+        # print(f'DocId: {doc.id} => Data: {doc.to_dict()}')
         temp = doc.to_dict()
         temp['id'] = doc.id
         data.append(temp)
