@@ -1,5 +1,5 @@
 import time
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
@@ -23,6 +23,8 @@ def get_current_time():
 def temp():
     data = dict()
     for key, val in request.form.items():
+        print("key:", key)
+        print("val:", val)
         data[key] = val
 
     if('file' not in request.files):
