@@ -16,6 +16,7 @@ import './styles/explore.css'
 export default function ExplorePage() {
   const [notes, setNotes] = useState([]);
   const [lectures, setLectures] = useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     db.collection("notes")
@@ -104,9 +105,9 @@ export default function ExplorePage() {
                 width: '80%'
             }}>
                 <SearchInput placeholder="Search for notes..."
-                    height={40}
-                    width='100%'
-                    fontFamily={'Avenir'}
+                  height={40}
+                  width='100%'
+                  fontFamily={'Avenir'}
                 />
             </div>
 
