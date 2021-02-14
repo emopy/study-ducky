@@ -12,7 +12,7 @@ class FileDetails extends React.Component {
         return (
             <div>
                 <p>Title {this.props.title}</p>
-                <p>School {this.props.scohol}</p>
+                <p>School {this.props.school}</p>
                 <p>Description {this.props.description}</p>
                 <p>Keywords {this.props.keywords}</p>
                 <p>URL {this.props.url}</p>
