@@ -22,7 +22,7 @@ def get_current_time():
     return {'time': time.time()}
 
 @app.route('/api/uploadpdf', methods=['POST'])
-def handleuploadfile():
+def handleUploadFile():
     data = dict()
     for key, val in request.form.items():
         print("key:", key)
@@ -46,7 +46,7 @@ def handleuploadfile():
     return { "keywords": keywords }
 
 @app.route('/api/uploadvideo', methods=['POST'])
-def temp():
+def handleUploadVideo():
     data = dict()
     for key, val in request.form.items():
         print("key:", key)
@@ -55,7 +55,12 @@ def temp():
 
     if('file' not in request.files):
         return {"status": "ERR_MISSING_FILE"}
+
     f = request.files['file']
+    lpath = '.' + os.sep + str(hash(f))
+
+    f.save(lpath)
     data['file'] = f
 
-    return {'hi': 'hi'}
+    os.remove(lpath)
+    return { "keywords": keywords }
