@@ -76,17 +76,18 @@ export default function ExplorePage() {
         <div id="explorePage" style={{
             backgroundImage: `url(${bgImg})`,
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
+            margin: '0px'
         }}
         >
         <Container><FadeIn>
 
         <h1>Explore Notes <Emoji symbol="✏️"/></h1><br/>
-        <div>
+        <div style={{width:'100%', height: '60px'}}>
             <div style={{
                 float: 'left',
                 marginBottom: '40px',
-                marginRight: '1vh',
+                marginRight: '2vh',
                 width: '80%'
             }}>
                 <SearchInput placeholder="Search for notes..."
@@ -104,12 +105,24 @@ export default function ExplorePage() {
             >
                 Search
             </Button>
-        </div>
-        
+        </div>        
 
-        <div style={{height: '20px'}}/>
+        {/* <div style={{marginTop: '20px',
+            textAlign: 'center',
+            alignItems: 'center',
+            width: '100%',
+            height: '60px',
+        }}>
+            <Button height={40} 
+                float={'left'} 
+                marginLeft={0}
+                fontFamily={'Avenir'} >
+                Add New File
+            </Button>
+        </div> */}
 
-        <div>
+        <div style={{marginBottom:'100px'}}>
+
           {notes.map(item => {
             let pdfurl = null;
             if(item.isVideo) {
@@ -128,39 +141,7 @@ export default function ExplorePage() {
             )
           })}
 
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
-
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
-
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
-
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
-
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
-
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
-
         </div>
-
-        <div style={{height: '100px'}}/>
 
         </FadeIn></Container>
         </div>
