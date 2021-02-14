@@ -15,7 +15,7 @@ class FileCard extends React.Component {
               <div className="card-header">
                   <span>{this.props.school}</span>
               </div>
-              <div>
+              <div style={{height:'120px', overflow:'hidden'}}>
                 <a style={{margin: "auto"}} href={this.props.pdfurl} target="_blank" className="pdf-anchor d-flex justify-content-center pdf-preview">
                   <PDFViewer
                     pdfURL={this.props.pdfurl}

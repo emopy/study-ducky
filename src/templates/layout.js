@@ -1,5 +1,7 @@
 import React from 'react';
 
+// import '../bootstrap.min.css';
+
 export default function Layout({ children }) {
 
   return (
