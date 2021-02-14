@@ -8,7 +8,7 @@ import Navbar from '../components/navbar'
 import PDFViewer from '../components/pdfviewer'
 import { db } from '../firebase'
 
-import { Button } from 'evergreen-ui'
+import { Button, Badge } from 'evergreen-ui'
 
 
 import FadeIn from 'react-fade-in';
@@ -145,9 +145,10 @@ class Details extends React.Component {
 
                 <h1><Emoji symbol="✏️"/> {data.title}</h1><br/>
 
-                <h3>{this.state.data.school}</h3>
+                <Badge color="green">{this.state.data.school}</Badge>
+
                 <p>{this.state.data.description}</p>
-                {this.state.data.keywords}
+
                 {this.state.data.pdfurl}
                 {this.state.data.relevance}
                 
@@ -180,6 +181,19 @@ class Details extends React.Component {
                         Downvote
                     </Button>
                 </div>
+
+                <div>
+                    <h3>Tags</h3>
+                    <div style={{
+                        maxHeight: '300px',
+                        overflow: 'scroll'
+                    }}>
+                    {this.state.data.keywords && this.state.data.keywords.map(keyword => {
+                        return <Badge color="teal" marginRight={8}>{keyword}</Badge>
+                    })}
+                    </div>
+                </div>
+                
 
                 </FadeIn></Container>
                 </div>
