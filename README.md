@@ -13,9 +13,9 @@ Otherwise, follow code in Bash script.
 Afterwards, to start the app, in two different terminals:
 ```
 # Start the React server on localhost:3000
-npm start
+yarn start
 # Start the Flask server on localhost:5000
-npm start-api
+yarn start-api
 ```
 
 

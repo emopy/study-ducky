@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import SplashPage from './pages/splash'
 import ExplorePage from './pages/explore'
 
+import UploadNotesForm from "./components/UploadNotesForm";
 import './App.css';
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route path="/explore">
                 <ExplorePage/>
+            </Route>
+            <Route path="/page2">
+              <UploadNotesForm />
             </Route>
           </Switch>
         </BrowserRouter>
