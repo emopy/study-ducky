@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './styles/navbar.css'
 
-import logoImg from '../assets/logo.png'
+import logoImg from '../assets/horizontal-logo.png'
 
 export default function Navbar() {
 

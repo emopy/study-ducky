@@ -6,7 +6,7 @@ import Emoji from '../components/emoji'
 import Navbar from '../components/navbar'
 
 import FadeIn from 'react-fade-in';
-import bgImg from '../assets/bg-2.png'
+import bgImg from '../assets/bg-4.png'
 
 import { Button } from 'evergreen-ui'
 
@@ -49,8 +49,7 @@ class UploadPage extends React.Component {
                 <Navbar/>
                 <Container><FadeIn>
 
-                <h1><Emoji symbol="📁"/> Upload File</h1><br/>
-
+                <h1><Emoji symbol="📁"/> Upload Notes</h1><br/>
 
                 <div style={{marginBottom:'20px'}}>
                 <Button
@@ -59,7 +58,7 @@ class UploadPage extends React.Component {
                     marginRight={8}
                     fontFamily={'Avenir'} 
                     onClick={() => {this.clickButton1();}}>
-                    New Note
+                    New PDF File
                 </Button>
 
                 <Button
@@ -68,7 +67,7 @@ class UploadPage extends React.Component {
                     marginLeft={8}
                     fontFamily={'Avenir'} 
                     onClick={() => {this.clickButton2();}}>
-                    New Lecture
+                    New Lecture Video
                 </Button>
                 </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Button, Form } from "react-bootstrap";
+import { Row, Col, Button, Form } from "react-bootstrap";
 import { storage } from "../firebase";
 
 import FadeIn from 'react-fade-in';
@@ -97,13 +97,13 @@ const UploadLecturesForm = (props) => {
   return (
     <FadeIn>
     <div style={{
-        width:'94%',
+        width:'100%',
         backgroundColor:'white',
         padding: '20px',
         borderRadius: '5px',
         margin: '0px'
     }}>
-    <h2>Upload Lecture</h2><br/>
+    <h3>Upload Lecture Video</h3><br/>
       <Form onSubmit={handleSubmit} >
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Title</Form.Label>
@@ -114,24 +114,32 @@ const UploadLecturesForm = (props) => {
             onChange={e => setTitle(e.target.value)}
           />
         </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>School</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter in school..."
-            value={school}
-            onChange={e => setSchool(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Course ID</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter in course ID..."
-            value={course}
-            onChange={e => setCourse(e.target.value)}
-          />
-        </Form.Group>
+        <Row>
+            <Col>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>School</Form.Label>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter in school..."
+                    value={school}
+                    onChange={e => setSchool(e.target.value)}
+                />
+                </Form.Group>
+            </Col>
+            <Col>
+                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Course ID</Form.Label>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter in course ID..."
+                    value={course}
+                    onChange={e => setCourse(e.target.value)}
+                />
+                </Form.Group>
+            
+            </Col>
+        </Row>
+        
         <Form.Group controlId="exampleForm.ControlTextarea1">
           <Form.Label>Description</Form.Label>
           <Form.Control

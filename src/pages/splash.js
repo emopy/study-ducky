@@ -3,47 +3,52 @@ import { Link } from 'react-router-dom';
 import Layout from '../templates/layout'
 
 import FadeIn from 'react-fade-in';
-import { Button } from 'evergreen-ui'
+import { Button, ArrowRightIcon } from 'evergreen-ui'
+import { Row, Col } from 'react-bootstrap'
 
 import './styles/splash.css'
 
 import bgImg from '../assets/splash-bg.png'
-import duckImg from '../assets/duck.png'
+import duckImg from '../assets/logo-icon.png'
 
 export default function SplashPage() {
 
   return (
-    <Layout>
+    <div>
         <div id="splash-page" style={{
             backgroundImage: `url(${bgImg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}>
-        
-            <div>
-                <img id='duck-float' src={duckImg} style={{
-                    height: '200px', marginBottom: '30px', float: 'left', display: 'inline-block'
-                }}/>
-            </div>
 
-            <div style={{ float: 'right', display: 'inline-block' }}>
-            <FadeIn>
-                <h1>Study Ducky</h1>
-                <h2 style={{ color: '#5c7370'}}>Note sharing made easy.</h2>
-                <Link to="/explore" style={{textDecoration:'none'}}>
-                    <Button
-                        height={60}
-                        marginTop={20}
-                        fontSize={18}
-                        fontFamily={'Avenir'}
-                    >
-                        Get Started &rarr;
-                    </Button>
-                </Link>
-                </FadeIn>
-            </div>
+            <Row style={{marginTop:'50px', width:'75%'}}>
+                <Col xs={12} md={5}>
+                    <img id='duck-float' src={duckImg} style={{
+                        height: '360px', marginBottom: '-20px'
+                    }}/>
+                </Col>
+
+                <Col xc={12} md={7}>
+                    <div style={{textAlign: 'left', marginTop: '80px'}}>
+                        <FadeIn>
+                            <h1 style={{color: 'black', fontSize: '5rem'}}>StudyDucky</h1>
+                            <h2 style={{ color: '#4a4a4a' }}>Sharing notes made easy.</h2>
+                            <Link to="/explore" style={{textDecoration:'none'}}>
+                                <Button
+                                    height={60}
+                                    marginTop={20}
+                                    fontSize={20}
+                                    fontFamily={'Avenir'}
+                                    iconAfter={ArrowRightIcon} >
+                                    Get Started
+                                </Button>
+                            </Link>
+                        </FadeIn>
+                    </div>
+                </Col>
+            </Row>
         
         </div>
-    </Layout>
+    </div>
   );
 }

@@ -15,8 +15,9 @@ class FileCard extends React.Component {
           <div className='fc-container'>
               <div className="card-header">
                   <span>{this.props.school}</span>
+                  <span style={{float:'right'}}>[{this.props.relevance}]</span>
               </div>
-              <div style={{height:'120px', overflow:'hidden'}}>
+              <div style={{height:'120px', overflow:'hidden', marginBottom: '10px'}}>
                 <Link style={{margin: "auto"}}
                       to={{
                         pathname: "/details",
@@ -34,7 +35,7 @@ class FileCard extends React.Component {
               <h3 className="card-title">
                   <span>{this.props.title}</span>
               </h3>
-              <p style={{fontSize: "1.1rem"}}>{this.props.description}</p>
+              <p style={{fontSize: "1rem", fontFamily: 'Avenir'}}>{this.props.description}</p>
           </div>
 
         );

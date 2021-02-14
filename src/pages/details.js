@@ -8,12 +8,14 @@ import Navbar from '../components/navbar'
 import PDFViewer from '../components/pdfviewer'
 import { db } from '../firebase'
 
-import { Button, Badge, ArrowRightIcon, ArrowLeftIcon } from 'evergreen-ui'
-import { Row, Col } from 'react-bootstrap';
+import { Button as ClearButton, ArrowLeftIcon } from 'evergreen-ui'
+import { Badge } from 'evergreen-ui'
 
+import { Row, Col } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 import FadeIn from 'react-fade-in';
-import bgImg from '../assets/bg-2.png'
+import bgImg from '../assets/bg-3.png'
 
 import './styles/details.css'
 
@@ -146,13 +148,13 @@ class Details extends React.Component {
 
                 <Row style={{marginBottom: '30px'}}>
                     <Link to='/explore'>
-                        <Button 
-                            iconBefore={ArrowLeftIcon} 
-                            height={40}
-                            fontSize={16}
-                            appearance={'minimal'}>
-                            <span>Back to Explore</span>
-                        </Button>
+                    <ClearButton 
+                        iconBefore={ArrowLeftIcon} 
+                        height={40}
+                        fontSize={16}
+                        appearance={'minimal'}>
+                        <span>Back to Explore</span>
+                    </ClearButton>
                     </Link>   
                 </Row>
 
@@ -162,7 +164,7 @@ class Details extends React.Component {
 
                 <Row>
                     <Col xs={12} md={4}>
-                        <div style={{height:'auto', overflow:'hidden'}}>
+                        <div style={{height:'auto', overflow:'hidden' }}>
                             <a style={{margin: "auto"}}
                                     to={data.pdfurl}
                                     className="pdf-anchor d-flex justify-content-center pdf-preview">
@@ -180,22 +182,18 @@ class Details extends React.Component {
                         <p><b>Popularity</b>: {this.state.data.relevance}</p>
                         <div>
                             <Button
-                                intent="success"
-                                height={40}
-                                fontFamily={'Avenir'}
-                                float={'center'}
-                                marginRight={'1vw'}
-                                appearance="primary"
-                                onClick={e => this.handleUpvote(e, data.isNote, data.isVideo, data.docId)} >
+                                variant="success"
+                                size="sm"
+                                onClick={e => this.handleUpvote(e, data.isNote, data.isVideo, data.docId)}
+                                style={{
+                                    marginRight: '1vw'
+                                }} >
                                 Upvote
                             </Button>
 
                             <Button
-                                intent="danger"
-                                height={40}
-                                fontFamily={'Avenir'}
-                                float={'center'}
-                                appearance="primary"
+                                variant="danger"
+                                size="sm"
                                 onClick={e => this.handleDownvote(e, data.isNote, data.isVideo, data.docId)} >
                                 Downvote
                             </Button>
@@ -205,10 +203,8 @@ class Details extends React.Component {
 
                         <a href={ this.state.data.isVideo ? this.state.data.pdfurl : this.state.data.url } target="_blank" rel="noopener noreferrer">
                             <Button
-                                height={50}
-                                fontSize={18}
-                                appearance="primary"
-                                fontFamily={'Avenir'} >
+                                variant="info"
+                                size="lg" >
                                 View Notes &rarr;
                             </Button>
                         </a>

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import { SearchInput, Button } from 'evergreen-ui'
+import { SearchInput } from 'evergreen-ui'
 import Container from '../components/container'
 import Layout from '../templates/layout'
 import Emoji from '../components/emoji'
 import FileCard from '../components/file-card'
 import Navbar from '../components/navbar'
+
+import { Button } from "react-bootstrap";
 
 import FadeIn from 'react-fade-in';
 import { db } from '../firebase';
@@ -186,7 +188,8 @@ export default function ExplorePage() {
     <Layout>
         <div id="explorePage" style={{
             backgroundImage: `url(${bgImg})`,
-            backgroundSize: 'cover',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'repeat',
             backgroundPosition: 'center',
             margin: '0px'
         }}
@@ -212,17 +215,15 @@ export default function ExplorePage() {
 
             <Button
                 height={40}
-                float={'left'}
-                marginLeft={0}
                 fontFamily={'Avenir'}
-                appearance="primary"
+                variant="info"
                 onClick={e => onSearchClick(e)}
             >
                 Search
             </Button>
         </div>
 
-        <div style={{marginBottom:'100px'}}>
+        <div style={{marginBottom:'60px'}}>
 
             {merged.map(item => {
               let pdfurl = null;
