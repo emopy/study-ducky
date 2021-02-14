@@ -17,6 +17,8 @@ import './styles/explore.css'
 export default function ExplorePage() {
   const [notes, setNotes] = useState([]);
   const [lectures, setLectures] = useState([]);
+  const [query, setQuery] = useState([]);
+  const [text, setText] = useState("");
 
   useEffect(() => {
     db.collection("notes")
@@ -72,6 +74,61 @@ export default function ExplorePage() {
         });
   }, []);
 
+//   useEffect(() => {
+//     let data = [];
+//     db.collection("notes").where("keywords", "array-contains", text)
+//       .get()
+//       .then((querySnapshot) => {
+//           querySnapshot.forEach((doc) => {
+//               let temp = doc.data();
+//               temp['docId'] = doc.id;
+//               data.push(temp);
+//           });
+//       })
+//     db.collection("videos").where("keywords", "array-contains", text)
+//       .get()
+//       .then((querySnapshot) => {
+//           querySnapshot.forEach((doc) => {
+//               let temp = doc.data();
+//               temp['docId'] = doc.id;
+//               data.push(temp);
+//           });
+//       })
+//     setQuery(data);
+//     console.log("runs");
+//   }, [text])
+
+  useEffect(() => {
+
+  }, [text])
+
+  useEffect(() => {
+
+  }, [query])
+
+  let onSearchClick = async (event) => {
+    let data = [];
+    await db.collection("notes").where("keywords", "array-contains", text)
+     .get()
+     .then((querySnapshot) => {
+         querySnapshot.forEach((doc) => {
+             let temp = doc.data();
+             temp['docId'] = doc.id;
+             data.push(temp);
+         });
+     })
+    await db.collection("videos").where("keywords", "array-contains", text)
+     .get()
+     .then((querySnapshot) => {
+         querySnapshot.forEach((doc) => {
+             let temp = doc.data();
+             temp['docId'] = doc.id;
+             data.push(temp);
+         });
+     })
+    setQuery(data);
+  }
+
   function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -83,9 +140,12 @@ export default function ExplorePage() {
     return a;
   }
 
-  let merged = notes.concat(lectures)
-  merged = shuffle(merged);
-
+  let merged = [];
+  if(query.length === 0) {
+    merged = notes.concat(lectures)
+  } else {
+    merged = query;
+  }
   return (
     <Layout>
         <div id="explorePage" style={{
@@ -107,9 +167,10 @@ export default function ExplorePage() {
                 width: '80%'
             }}>
                 <SearchInput placeholder="Search for notes..."
-                    height={40}
-                    width='100%'
-                    fontFamily={'Avenir'}
+                  height={40}
+                  width='100%'
+                  fontFamily={'Avenir'}
+                  onChange={e => setText(e.target.value)}
                 />
             </div>
 
@@ -117,7 +178,9 @@ export default function ExplorePage() {
                 height={40}
                 float={'left'}
                 marginLeft={0}
-                fontFamily={'Avenir'} >
+                fontFamily={'Avenir'}
+                onClick={e => onSearchClick(e)}
+            >
                 Search
             </Button>
         </div>
@@ -131,7 +194,6 @@ export default function ExplorePage() {
               } else if(item.isNote) {
                 pdfurl = item.url;
               }
-              console.log(item);
               return (
                 <FileCard
                   title={item.name}

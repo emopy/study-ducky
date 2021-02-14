@@ -4,6 +4,7 @@ from collections import OrderedDict
 
 def searchKeyword(word, filt={}):
     sortedList = []
+    data = get("notes") + get("lectures")
     for note in data:
         if ("courseLevel" in filt) and (note["courseLevel"] not in filt["courseLevel"]):
             continue
@@ -15,10 +16,10 @@ def searchKeyword(word, filt={}):
         if word in keywords:
             sortedList.append(note)
 
-    sortedList.sort(reverse = True, key= lambda x: x["preference"])
+    sortedList.sort(reverse = True, key= lambda x: x["relevance"])
     return sortedList
 
-# test
+# tes2
 
 def printDicList(lst):
     temp = []
