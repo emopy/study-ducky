@@ -46,7 +46,7 @@ class UploadPage extends React.Component {
                 <Navbar/>
                 <Container><FadeIn>
 
-                <h1>Upload Files <Emoji symbol="✏️"/></h1><br/>
+                <h1><Emoji symbol="📁"/> Upload Files</h1><br/>
 
                 <p><a onClick = {() => { this.clickButton1(); }}> Upload Notes </a></p>
                 <p><a onClick = {() => { this.clickButton2(); }}> Upload Lecture </a></p>
