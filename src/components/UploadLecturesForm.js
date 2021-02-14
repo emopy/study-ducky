@@ -93,6 +93,7 @@ const UploadLecturesForm = (props) => {
   }
   return (
     <div>
+        <h2>Upload Lecture</h2>
       <Form onSubmit={handleSubmit} >
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Title</Form.Label>
