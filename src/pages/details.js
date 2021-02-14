@@ -148,14 +148,14 @@ class Details extends React.Component {
 
                 <Row style={{marginBottom: '30px'}}>
                     <Link to='/explore'>
-                    <ClearButton 
-                        iconBefore={ArrowLeftIcon} 
+                    <ClearButton
+                        iconBefore={ArrowLeftIcon}
                         height={40}
                         fontSize={16}
                         appearance={'minimal'}>
                         <span>Back to Explore</span>
                     </ClearButton>
-                    </Link>   
+                    </Link>
                 </Row>
 
                 <Row style={{marginBottom: '20px'}}>
@@ -208,18 +208,18 @@ class Details extends React.Component {
                                 View Notes &rarr;
                             </Button>
                         </a>
-                        
+
                     </Col>
                 </Row>
 
 
-                
+
                 <Row style={{marginTop: '40px'}}>
                     <div>
                         <h3>Tags</h3>
                         <div style={{
                             maxHeight: '200px',
-                            overflow: 'scroll'
+                            overflow: 'auto'
                         }}>
                         {this.state.data.keywords && this.state.data.keywords.map(keyword => {
                             return <Badge color="teal" marginRight={8}>{keyword}</Badge>
