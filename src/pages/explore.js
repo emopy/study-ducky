@@ -29,8 +29,8 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setNotes(data);
           });
+          setNotes(data);
       })
       .catch((error) => {
           console.log("Error getting documents: ", error);
@@ -43,8 +43,8 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setNotes(data);
             });
+            setNotes(data);
         });
 
     db.collection("videos")
@@ -55,8 +55,8 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setLectures(data);
           });
+          setLectures(data);
       })
       .catch((error) => {
           console.log("Error getting documents: ", error);
@@ -69,8 +69,8 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setLectures(data);
             });
+            setLectures(data);
         });
     return () => {
       notesUnsubscribe();
@@ -104,11 +104,7 @@ export default function ExplorePage() {
 
   useEffect(() => {
 
-  }, [text])
-
-  useEffect(() => {
-
-  }, [query])
+  }, [text, query, notes, lectures])
 
   let onSearchClick = async (event) => {
     let data = [];
