@@ -5,6 +5,7 @@ import Container from '../components/container'
 import Layout from '../templates/layout'
 import Emoji from '../components/emoji'
 import FileCard from '../components/file-card'
+import Navbar from '../components/navbar'
 
 import FadeIn from 'react-fade-in';
 import { db } from '../firebase';
@@ -94,6 +95,7 @@ export default function ExplorePage() {
             margin: '0px'
         }}
         >
+        <Navbar/>
         <Container><FadeIn>
 
         <h1>Explore Notes <Emoji symbol="✏️"/></h1><br/>
@@ -115,25 +117,10 @@ export default function ExplorePage() {
                 height={40}
                 float={'left'}
                 marginLeft={0}
-                fontFamily={'Avenir'}
-            >
+                fontFamily={'Avenir'} >
                 Search
             </Button>
-        </div>        
-
-        {/* <div style={{marginTop: '20px',
-            textAlign: 'center',
-            alignItems: 'center',
-            width: '100%',
-            height: '60px',
-        }}>
-            <Button height={40} 
-                float={'left'} 
-                marginLeft={0}
-                fontFamily={'Avenir'} >
-                Add New File
-            </Button>
-        </div> */}
+        </div>
 
         <div style={{marginBottom:'100px'}}>
 
