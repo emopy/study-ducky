@@ -185,7 +185,7 @@ export default function ExplorePage() {
             <div style={{
                 float: 'left',
                 marginBottom: '40px',
-                marginRight: '2vw',
+                marginRight: '1vw',
                 width: '80%'
             }}>
                 <SearchInput placeholder="Search for notes..."
