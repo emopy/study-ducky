@@ -2,9 +2,11 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
+credfile = "../../treehacks-951cf-firebase-adminsdk-id17i-31b060d8cc.json"
+
 def get(collection):
 # Use the application default credentials
-    cred = credentials.Certificate("../../treehacks-951cf-firebase-adminsdk-id17i-31b060d8cc.json")
+    cred = credentials.Certificate(credfile)
 
     firebase_admin.initialize_app(cred, {
       'projectId': "treehacks-951cf",
@@ -26,7 +28,11 @@ def get(collection):
     return data
 
 def add(data, collection):
-    cred = credentials.ApplicationDefault()
+    cred = credentials.Certificate(credfile)
+
+    firebase_admin.initialize_app(cred, {
+      'projectId': "treehacks-951cf",
+    })
 
     db = firestore.client()
 
