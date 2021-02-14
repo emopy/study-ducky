@@ -51,34 +51,36 @@ class UploadPage extends React.Component {
 
                 <h1><Emoji symbol="📁"/> Upload File</h1><br/>
 
-                <p><a onClick = {() => { this.clickButton1(); }}> Upload Notes </a></p>
-                <p><a onClick = {() => { this.clickButton2(); }}> Upload Lecture </a></p>
 
-
-                <div>
-
+                <div style={{marginBottom:'20px'}}>
+                <Button
+                    height={40}
+                    float={'center'}
+                    marginRight={8}
+                    fontFamily={'Avenir'} 
+                    onClick={() => {this.clickButton1();}}>
+                    New Note
+                </Button>
 
                 <Button
                     height={40}
                     float={'center'}
-                    marginLeft={0}
-                    fontFamily={'Avenir'} >
-                    Upload Notes
+                    marginLeft={8}
+                    fontFamily={'Avenir'} 
+                    onClick={() => {this.clickButton2();}}>
+                    New Lecture
                 </Button>
                 </div>
 
-                <div>
-                {(this.state.tabClicked == 1) && (
-                    <UploadNotesForm/>
-                )}
+                <div style={{width: '100%'}}>
+                    {(this.state.tabClicked == 1) && (
+                        <UploadNotesForm/>
+                    )}
 
-                {(this.state.tabClicked == 2) && (
-                    <UploadLecturesForm/>
-                )}
-
+                    {(this.state.tabClicked == 2) && (
+                        <UploadLecturesForm/>
+                    )}
                 </div>
-
-                
                 
                 </FadeIn></Container>
                 </div>
