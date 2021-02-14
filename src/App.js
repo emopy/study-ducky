@@ -23,7 +23,6 @@ function App() {
                 <SplashPage/>
             </Route>
             <Route path="/explore">
-                <div style={{height: '60px'}}></div>
                 {/* <div>
                     <Link className="App-link" to="/">Home</Link>
                     &nbsp;| &nbsp;
@@ -32,7 +31,6 @@ function App() {
                 <ExplorePage/>
             </Route>
             <Route path="/add">
-                <div style={{height: '60px'}}></div>
                 {/* <div>
                     <Link className="App-link" to="/">Home</Link>
                     &nbsp;| &nbsp;

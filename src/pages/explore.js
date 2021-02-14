@@ -9,6 +9,9 @@ import FileCard from '../components/file-card'
 import FadeIn from 'react-fade-in';
 import { db } from '../firebase';
 
+import bgImg from '../assets/bg-2.png'
+
+import './styles/explore.css'
 
 export default function ExplorePage() {
   const [notes, setNotes] = useState([]);
@@ -78,8 +81,13 @@ export default function ExplorePage() {
 
   return (
     <Layout>
+        <div id="explorePage" style={{ 
+            backgroundImage: `url(${bgImg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+        }}
+        >  
         <Container><FadeIn>
-
 
         <h2>Explore Notes <Emoji>✏️</Emoji></h2>
         <SearchInput placeholder="Search for notes..."
@@ -91,45 +99,46 @@ export default function ExplorePage() {
           Default
         </Button>
 
-        <div style={{height: '20px'}}></div>
+        <div style={{height: '20px'}}/>
 
         <div>
 
-        <FileCard
-            title="title here"
-            description="lorem ipsum"
-        />
+            <FileCard
+                title="title here"
+                description="lorem ipsum"
+            />
 
-        <FileCard
-            title="title here"
-            description="lorem ipsum"
-        />
+            <FileCard
+                title="title here"
+                description="lorem ipsum"
+            />
 
-        <FileCard
-            title="title here"
-            description="lorem ipsum"
-        />
+            <FileCard
+                title="title here"
+                description="lorem ipsum"
+            />
 
-        <FileCard
-            title="title here"
-            description="lorem ipsum"
-        />
+            <FileCard
+                title="title here"
+                description="lorem ipsum"
+            />
 
-        <FileCard
-            title="title here"
-            description="lorem ipsum"
-        />
+            <FileCard
+                title="title here"
+                description="lorem ipsum"
+            />
 
-        <FileCard
-            title="title here"
-            description="lorem ipsum"
-        />
+            <FileCard
+                title="title here"
+                description="lorem ipsum"
+            />
 
         </div>
 
-        <div style={{height: '100px'}}></div>
+        <div style={{height: '100px'}}/>
 
         </FadeIn></Container>
+        </div>
     </Layout>
   );
 }

@@ -15,7 +15,8 @@ export default function SplashPage() {
     <Layout>
         <div id="splash-page" style={{ 
             backgroundImage: `url(${bgImg})`,
-            backgroundSize: 'cover'
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
         }}>
         <FadeIn>
             <img src={duckImg} style={{height: '200px'}}/>
