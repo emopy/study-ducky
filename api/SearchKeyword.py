@@ -1,9 +1,9 @@
 import json
+from firebase import get
 from collections import OrderedDict
 
 def searchKeyword(word, filt={}):
     sortedList = []
-    
     for note in data:
         if ("courseLevel" in filt) and (note["courseLevel"] not in filt["courseLevel"]):
             continue
@@ -26,10 +26,11 @@ def printDicList(lst):
         temp.append(d["documentID"])
     print(temp)
 
-# Opening JSON file 
-with open("test.json") as json_file: 
-    data = json.load(json_file) 
+if(__name__ == '__main__'):
+    # Opening JSON file
+    with open("test.json") as json_file:
+        data = json.load(json_file)
 
-printDicList(searchKeyword("electron",{}))
-printDicList(searchKeyword("matrix"))
+    printDicList(searchKeyword("electron",{}))
+    printDicList(searchKeyword("matrix"))
 

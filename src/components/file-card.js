@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './styles/file-card.css'
+import PDFViewer from "./pdfviewer";
 
 class FileCard extends React.Component {
 
@@ -12,16 +13,23 @@ class FileCard extends React.Component {
         return (
         <a href={this.props.link}>
             <div className='fc-container'>
-                <div className='fc-img-container'>
-                    <img className='fc-img' src={this.props.img}/>
+                <div>
+                  <a href={this.props.pdfurl} target="_blank" className="pdf-anchor d-flex justify-content-center pdf-preview">
+                    <PDFViewer
+                      pdfURL={this.props.pdfurl}
+                    />
+                  </a>
                 </div>
                 <h3>
                     <span>{this.props.title}</span>
                 </h3>
                 <p style={{fontSize: "1.1rem"}}>{this.props.description}</p>
+                <p>
+                    <span>{this.props.school}</span>
+                </p>
             </div>
         </a>
-            
+
         );
     }
 }

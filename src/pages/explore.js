@@ -27,7 +27,6 @@ export default function ExplorePage() {
               temp['docId'] = doc.id;
               data.push(temp);
               setNotes(data);
-              console.log(doc.id, " => ", doc.data());
           });
       })
       .catch((error) => {
@@ -42,8 +41,6 @@ export default function ExplorePage() {
               temp['docId'] = doc.id;
               data.push(temp);
               setNotes(data);
-
-              console.log(doc.id, " => ", doc.data());
             });
         });
 
@@ -56,7 +53,6 @@ export default function ExplorePage() {
               temp['docId'] = doc.id;
               data.push(temp);
               setNotes(data);
-              console.log(doc.id, " => ", doc.data());
           });
       })
       .catch((error) => {
@@ -71,22 +67,18 @@ export default function ExplorePage() {
               temp['docId'] = doc.id;
               data.push(temp);
               setNotes(data);
-
-              console.log(doc.id, " => ", doc.data());
             });
         });
   }, []);
 
-  console.log(notes);
-
   return (
     <Layout>
-        <div id="explorePage" style={{ 
+        <div id="explorePage" style={{
             backgroundImage: `url(${bgImg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}
-        >  
+        >
         <Container><FadeIn>
 
         <h2>Explore Notes <Emoji>✏️</Emoji></h2>
@@ -102,6 +94,23 @@ export default function ExplorePage() {
         <div style={{height: '20px'}}/>
 
         <div>
+          {notes.map(item => {
+            let pdfurl = null;
+            if(item.isVideo) {
+              pdfurl = item.pdfurl;
+            } else if(item.isNote) {
+              pdfurl = item.url;
+            }
+            console.log(item);
+            return (
+              <FileCard
+                title={item.name}
+                description={item.description}
+                school={item.school}
+                pdfurl={pdfurl}
+              />
+            )
+          })}
 
             <FileCard
                 title="title here"
