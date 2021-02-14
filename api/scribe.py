@@ -1,5 +1,4 @@
-from google.cloud import speech_v1
-from google.cloud.speech_v1 import enums
+from google.cloud import speech
 from splitter import Splitter
 from tqdm import tqdm
 import moviepy.editor as mp
@@ -62,7 +61,7 @@ class Scribe:
         Segment is a tuple ((start_time, end_time), filename).
         Runs long_running_recognize() if the audio segment is too long.
         '''
-        client = speech_v1.SpeechClient()
+        client = speech.SpeechClient()
 
         filename, timestamp = segment[0], segment[1]
         start, end = timestamp[0], timestamp[1]
@@ -71,7 +70,7 @@ class Scribe:
         sample_rate_hertz = 44100
 
         # We are using it on *.mp3 so we must use ENCODING_UNSPECIFIED
-        encoding = enums.RecognitionConfig.AudioEncoding.ENCODING_UNSPECIFIED
+        encoding = speech.RecognitionConfig.AudioEncoding.ENCODING_UNSPECIFIED
 
         config = {
             "language_code": language_code,
@@ -88,9 +87,9 @@ class Scribe:
         time_difference = int((end - start)/1000)
 
         if(time_difference < 60):
-            response = client.recognize(config, audio)
+            response = client.recognize(config=config, audio=audio)
         else:
-            response = client.long_running_recognize(config, audio)
+            response = client.long_running_recognize(config=config, audio=audio)
 
         transcripts = list()
 

@@ -240,3 +240,6 @@ pip-selfcheck.json
 api/venv
 node_modules
 api/__pycache__
+
+api/*.mp3
+api/*.mp4
