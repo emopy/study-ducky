@@ -8,6 +8,9 @@ import Navbar from '../components/navbar'
 import FileDetails from '../components/file-details'
 import PDFViewer from '../components/pdfviewer'
 
+import { Button } from 'evergreen-ui'
+
+
 import FadeIn from 'react-fade-in';
 import bgImg from '../assets/bg-2.png'
 
@@ -42,6 +45,19 @@ class Details extends React.Component {
                 <Container><FadeIn>
 
                 <h1><Emoji symbol="✏️"/> {data.title}</h1><br/>
+
+                
+                <Button
+                    height={40}
+                    fontFamily={'Avenir'} >
+                    Upvote
+                </Button>
+
+                <Button
+                    height={40}
+                    fontFamily={'Avenir'} >
+                    Downvote
+                </Button>
 
                 <div style={{height:'auto', overflow:'hidden'}}>
                   <a style={{margin: "auto"}}
