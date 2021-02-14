@@ -32,6 +32,7 @@ const PDFViewer = props => {
                   width={size.width}
                   pageNumber={pageNumber}
                   renderMode="svg"
+                  renderTextLayer={false}
                 />
               </div>
             </Document>

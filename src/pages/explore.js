@@ -218,7 +218,7 @@ export default function ExplorePage() {
               }
               return (
                 <FileCard
-                  title={item.title}
+                  title={item.name}
                   description={item.description}
                   school={item.school}
                   keywords={item.keywords}
