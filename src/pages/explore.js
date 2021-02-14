@@ -20,8 +20,8 @@ export default function ExplorePage() {
   const [query, setQuery] = useState([]);
   const [text, setText] = useState("");
 
-  useEffect(async () => {
-    await db.collection("notes")
+  useEffect(() => {
+    db.collection("notes")
       .get()
       .then((querySnapshot) => {
           let data = [];
@@ -47,7 +47,7 @@ export default function ExplorePage() {
             setNotes(data);
         });
 
-    await db.collection("videos")
+    db.collection("videos")
       .get()
       .then((querySnapshot) => {
           let data = [];
@@ -104,11 +104,7 @@ export default function ExplorePage() {
 
   useEffect(() => {
 
-  }, [text])
-
-  useEffect(() => {
-
-  }, [query])
+  }, [text, query, notes, lectures])
 
   let onSearchClick = async (event) => {
     let data = [];
