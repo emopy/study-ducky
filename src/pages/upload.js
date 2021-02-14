@@ -10,6 +10,9 @@ import bgImg from '../assets/bg-2.png'
 
 import './styles/upload.css'
 
+import UploadNotesForm from "../components/UploadNotesForm";
+
+
 export default function UploadPage() {
 
   return (
@@ -27,6 +30,7 @@ export default function UploadPage() {
         <h1>Upload Files <Emoji symbol="✏️"/></h1><br/>
         
         <p>hi</p>
+        <UploadNotesForm/>
         </FadeIn></Container>
         </div>
     </Layout>
