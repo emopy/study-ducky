@@ -20,8 +20,8 @@ export default function ExplorePage() {
   const [query, setQuery] = useState([]);
   const [text, setText] = useState("");
 
-  useEffect(() => {
-    db.collection("notes")
+  useEffect(async () => {
+    await db.collection("notes")
       .get()
       .then((querySnapshot) => {
           let data = [];
@@ -29,8 +29,8 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setNotes(data);
           });
+          setNotes(data);
       })
       .catch((error) => {
           console.log("Error getting documents: ", error);
@@ -43,11 +43,11 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setNotes(data);
             });
+            setNotes(data);
         });
 
-    db.collection("videos")
+    await db.collection("videos")
       .get()
       .then((querySnapshot) => {
           let data = [];
@@ -55,8 +55,8 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setLectures(data);
           });
+          setLectures(data);
       })
       .catch((error) => {
           console.log("Error getting documents: ", error);
@@ -69,8 +69,8 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setLectures(data);
             });
+            setLectures(data);
         });
     return () => {
       notesUnsubscribe();
