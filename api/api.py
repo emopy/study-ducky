@@ -20,7 +20,7 @@ def get_current_time():
     return {'time': time.time()}
 
 @app.route('/api/uploadfile', methods=['POST'])
-def temp():
+def handleuploadfile():
     data = dict()
     for key, val in request.form.items():
         print("key:", key)
@@ -32,7 +32,10 @@ def temp():
     f = request.files['file']
     data['file'] = f
 
-    return {'hi': 'hi'}
+    keywordextractor = Keywordextractor(f)
+    keywords = keywordextractor.get_keywords()
+
+    return keywords
 
 @app.route('/api/uploadvideo', methods=['POST'])
 def temp():
