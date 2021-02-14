@@ -11,36 +11,40 @@ import bgImg from '../assets/bg-2.png'
 
 import './styles/details.css'
 
-export default function Details() {
+class Details extends React.Component {
 
-    return (
-        <Layout>
-            <div id="uploadPage" style={{
-                backgroundImage: `url(${bgImg})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                margin: '0px',
-            }}
-            >
-            <Navbar/>
-            <Container><FadeIn>
+    constructor(props) {
+        super(props);
+    }
 
-            <h1>Details <Emoji symbol="✏️"/></h1><br/>
+    render() {
+        return (
+            <Layout>
+                <div id="uploadPage" style={{
+                    backgroundImage: `url(${bgImg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    margin: '0px',
+                }}
+                >
+                <Navbar/>
+                <Container><FadeIn>
 
+                <h1>Details <Emoji symbol="✏️"/></h1><br/>
 
-            <FileDetails
-                title="title"
-                school="school"
-                description="description"
-                keywords="keywords"
-                url="url"
-
-            />
-            
-            </FadeIn></Container>
-            </div>
-        </Layout>
-    );
-    
+                <FileDetails
+                    title="title"
+                    school="school"
+                    description="description"
+                    keywords="keywords"
+                    url="url"
+                />
+                
+                </FadeIn></Container>
+                </div>
+            </Layout>
+        );
+    }
 }
 
+export default Details;
