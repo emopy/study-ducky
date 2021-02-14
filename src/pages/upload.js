@@ -8,6 +8,9 @@ import Navbar from '../components/navbar'
 import FadeIn from 'react-fade-in';
 import bgImg from '../assets/bg-2.png'
 
+import { Button } from 'evergreen-ui'
+
+
 import './styles/upload.css'
 
 import UploadNotesForm from "../components/UploadNotesForm";
@@ -46,23 +49,38 @@ class UploadPage extends React.Component {
                 <Navbar/>
                 <Container><FadeIn>
 
-                <h1><Emoji symbol="📁"/> Upload Files</h1><br/>
+                <h1><Emoji symbol="📁"/> Upload File</h1><br/>
 
-                <p><a onClick = {() => { this.clickButton1(); }}> Upload Notes </a></p>
-                <p><a onClick = {() => { this.clickButton2(); }}> Upload Lecture </a></p>
 
-                <div>
-                {(this.state.tabClicked == 1) && (
-                    <UploadNotesForm/>
-                )}
+                <div style={{marginBottom:'20px'}}>
+                <Button
+                    height={40}
+                    float={'center'}
+                    marginRight={8}
+                    fontFamily={'Avenir'} 
+                    onClick={() => {this.clickButton1();}}>
+                    New Note
+                </Button>
 
-                {(this.state.tabClicked == 2) && (
-                    <UploadLecturesForm/>
-                )}
-
+                <Button
+                    height={40}
+                    float={'center'}
+                    marginLeft={8}
+                    fontFamily={'Avenir'} 
+                    onClick={() => {this.clickButton2();}}>
+                    New Lecture
+                </Button>
                 </div>
 
-                
+                <div style={{width: '100%'}}>
+                    {(this.state.tabClicked == 1) && (
+                        <UploadNotesForm/>
+                    )}
+
+                    {(this.state.tabClicked == 2) && (
+                        <UploadLecturesForm/>
+                    )}
+                </div>
                 
                 </FadeIn></Container>
                 </div>

@@ -41,7 +41,7 @@ class Details extends React.Component {
                 <Navbar/>
                 <Container><FadeIn>
 
-                <h1>Details <Emoji symbol="✏️"/></h1><br/>
+                <h1><Emoji symbol="✏️"/> {data.title}</h1><br/>
 
                 <div style={{height:'auto', overflow:'hidden'}}>
                   <a style={{margin: "auto"}}

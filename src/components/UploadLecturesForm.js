@@ -3,6 +3,9 @@ import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import { storage } from "../firebase";
 
+import FadeIn from 'react-fade-in';
+
+
 const FLASK_ENDPOINT = 'http://127.0.0.1:5000/api/uploadvideo';
 
 const UploadLecturesForm = (props) => {
@@ -92,8 +95,15 @@ const UploadLecturesForm = (props) => {
     event.stopPropagation();
   }
   return (
-    <div>
-        <h2>Upload Lecture</h2>
+    <FadeIn>
+    <div style={{
+        width:'94%',
+        backgroundColor:'white',
+        padding: '20px',
+        borderRadius: '5px',
+        margin: '0px'
+    }}>
+    <h2>Upload Lecture</h2>
       <Form onSubmit={handleSubmit} >
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Title</Form.Label>
@@ -145,7 +155,9 @@ const UploadLecturesForm = (props) => {
           Submit
         </Button>
       </Form>
+      
     </div>
+    </FadeIn>
   )
 }
 
