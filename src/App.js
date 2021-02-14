@@ -5,6 +5,8 @@ import logo from './logo.svg';
 import SplashPage from './pages/splash'
 import ExplorePage from './pages/explore'
 import UploadPage from './pages/upload'
+import DetailsPage from './pages/details'
+
 
 import UploadNotesForm from "./components/UploadNotesForm";
 import UploadLecturesForm from "./components/UploadLecturesForm";
@@ -42,6 +44,9 @@ function App() {
             </Route>
             <Route path="/upload-lectures">
               <UploadLecturesForm />
+            </Route>
+            <Route path="/details">
+              <DetailsPage />
             </Route>
           </Switch>
         </BrowserRouter>
