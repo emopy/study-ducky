@@ -29,10 +29,9 @@ export default function SplashPage() {
                     fontSize={18}
                     fontFamily={'Avenir'}
                 >
-                    Get Started
+                    Get Started &rarr;
                 </Button>
             </a>
-
         </FadeIn>
         </div>
     </Layout>

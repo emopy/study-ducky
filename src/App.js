@@ -6,10 +6,8 @@ import SplashPage from './pages/splash'
 import ExplorePage from './pages/explore'
 import AddPage from './pages/add'
 
-
 import UploadNotesForm from "./components/UploadNotesForm";
 import UploadLecturesForm from "./components/UploadLecturesForm";
-import './bootstrap.min.css';
 import './App.css';
 
 function App() {
