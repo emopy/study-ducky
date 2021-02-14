@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
 import logo from './logo.svg';
+import UploadNotesForm from "./components/UploadNotesForm";
 import './App.css';
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
                 <p>The current time is {currentTime}.</p>
             </Route>
             <Route path="/page2">
-                <p>This is page 2!</p>
+              <UploadNotesForm />
             </Route>
           </Switch>
         </BrowserRouter>
