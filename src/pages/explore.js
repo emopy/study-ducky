@@ -142,37 +142,6 @@ export default function ExplorePage() {
                 />
               )
             })}
-
-              <FileCard
-                  title="title here"
-                  description="lorem ipsum"
-              />
-
-              <FileCard
-                  title="title here"
-                  description="lorem ipsum"
-              />
-
-              <FileCard
-                  title="title here"
-                  description="lorem ipsum"
-              />
-
-              <FileCard
-                  title="title here"
-                  description="lorem ipsum"
-              />
-
-              <FileCard
-                  title="title here"
-                  description="lorem ipsum"
-              />
-
-              <FileCard
-                  title="title here"
-                  description="lorem ipsum"
-              />
-
           </div>
         </div>
 
