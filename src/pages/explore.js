@@ -221,6 +221,7 @@ export default function ExplorePage() {
                   title={item.name}
                   description={item.description}
                   school={item.school}
+                  keywords={item.keywords}
                   pdfurl={pdfurl}
                 />
               )

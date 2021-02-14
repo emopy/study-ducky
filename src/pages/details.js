@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Container from '../components/container'
 import Layout from '../templates/layout'
@@ -18,7 +19,15 @@ class Details extends React.Component {
     }
 
     render() {
-        console.log(this.props);
+        let state = this.props.location.state;
+        if(!state) {
+          return <Redirect to="/explore" />
+        }
+
+        let data = state.data;
+        if(!data) {
+          return <Redirect to="/explore" />
+        }
 
         return (
             <Layout>
@@ -35,11 +44,11 @@ class Details extends React.Component {
                 <h1>Details <Emoji symbol="✏️"/></h1><br/>
 
                 <FileDetails
-                    title="title"
-                    school="school"
-                    description="description"
-                    keywords="keywords"
-                    url="url"
+                    title={data.name}
+                    school={data.school}
+                    description={data.description}
+                    keywords={data.keywords}
+                    url={data.pdfurl}
                 />
 
                 </FadeIn></Container>

@@ -45,9 +45,7 @@ function App() {
             <Route path="/upload-lectures">
               <UploadLecturesForm />
             </Route>
-            <Route path="/details/:docId">
-              <DetailsPage />
-            </Route>
+            <Route path="/details" component={DetailsPage} />
           </Switch>
         </BrowserRouter>
       </header>
