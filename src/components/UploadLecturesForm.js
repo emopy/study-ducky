@@ -142,7 +142,7 @@ const UploadLecturesForm = (props) => {
           />
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Upload your PDF notes</Form.Label>
+          <Form.Label>Upload your mp4 lecture video</Form.Label>
           <Form.File
               id="custom-file"
               label={filename}

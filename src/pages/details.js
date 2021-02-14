@@ -5,7 +5,6 @@ import Container from '../components/container'
 import Layout from '../templates/layout'
 import Emoji from '../components/emoji'
 import Navbar from '../components/navbar'
-import FileDetails from '../components/file-details'
 import PDFViewer from '../components/pdfviewer'
 import { db } from '../firebase'
 
@@ -45,7 +44,6 @@ class Details extends React.Component {
               .onSnapshot((doc) => {
                 this.setState({ data: doc.data() })
               });
-
         }
 
       }
@@ -147,23 +145,12 @@ class Details extends React.Component {
 
                 <h1><Emoji symbol="✏️"/> {data.title}</h1><br/>
 
-
-                <Button
-                    height={40}
-                    fontFamily={'Avenir'}
-                    onClick={e => this.handleUpvote(e, data.isNote, data.isVideo, data.docId)}
-                >
-                    Upvote
-                </Button>
-
-                <Button
-                    height={40}
-                    fontFamily={'Avenir'}
-                    onClick={e => this.handleDownvote(e, data.isNote, data.isVideo, data.docId)}
-                >
-                    Downvote
-                </Button>
-
+                <h3>{this.state.data.school}</h3>
+                <p>{this.state.data.description}</p>
+                {this.state.data.keywords}
+                {this.state.data.pdfurl}
+                {this.state.data.relevance}
+                
                 <div style={{height:'auto', overflow:'hidden'}}>
                   <a style={{margin: "auto"}}
                         to={data.pdfurl}
@@ -175,14 +162,24 @@ class Details extends React.Component {
                   </a>
                 </div>
 
-                <FileDetails
-                    title={this.state.data.name}
-                    school={this.state.data.school}
-                    description={this.state.data.description}
-                    keywords={this.state.data.keywords}
-                    url={this.state.data.pdfurl}
-                    relevance={this.state.data.relevance}
-                />
+                <div>
+                    <Button
+                        height={40}
+                        fontFamily={'Avenir'}
+                        float={'center'}
+                        marginRight={20}
+                        onClick={e => this.handleUpvote(e, data.isNote, data.isVideo, data.docId)} >
+                        Upvote
+                    </Button>
+
+                    <Button
+                        height={40}
+                        fontFamily={'Avenir'}
+                        float={'center'}
+                        onClick={e => this.handleDownvote(e, data.isNote, data.isVideo, data.docId)} >
+                        Downvote
+                    </Button>
+                </div>
 
                 </FadeIn></Container>
                 </div>
