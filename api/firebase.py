@@ -4,7 +4,7 @@ from firebase_admin import firestore
 
 def get(collection):
 # Use the application default credentials
-    cred = credentials.ApplicationDefault()
+    cred = credentials.Certificate("../../treehacks-951cf-firebase-adminsdk-id17i-31b060d8cc.json")
 
     firebase_admin.initialize_app(cred, {
       'projectId': "treehacks-951cf",

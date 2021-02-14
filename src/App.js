@@ -6,6 +6,7 @@ import SplashPage from './pages/splash'
 import ExplorePage from './pages/explore'
 
 import UploadNotesForm from "./components/UploadNotesForm";
+import UploadLecturesForm from "./components/UploadLecturesForm";
 import './App.css';
 
 function App() {
@@ -27,8 +28,11 @@ function App() {
             <Route path="/explore">
                 <ExplorePage/>
             </Route>
-            <Route path="/page2">
+            <Route path="/upload-notes">
               <UploadNotesForm />
+            </Route>
+            <Route path="/upload-lectures">
+              <UploadLecturesForm />
             </Route>
           </Switch>
         </BrowserRouter>

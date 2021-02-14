@@ -1,6 +1,8 @@
 import time
+import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from keywordextractor import Keywordextractor
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 CORS(app)
@@ -19,7 +21,7 @@ def index():
 def get_current_time():
     return {'time': time.time()}
 
-@app.route('/api/uploadfile', methods=['POST'])
+@app.route('/api/uploadpdf', methods=['POST'])
 def handleuploadfile():
     data = dict()
     for key, val in request.form.items():
@@ -29,13 +31,19 @@ def handleuploadfile():
 
     if('file' not in request.files):
         return {"status": "ERR_MISSING_FILE"}
+
     f = request.files['file']
+    lpath = '.' + os.sep + str(hash(f))
+
+    f.save(lpath)
     data['file'] = f
 
-    keywordextractor = Keywordextractor(f)
+    keywordextractor = Keywordextractor(lpath)
     keywords = keywordextractor.get_keywords()
+    print(keywords)
 
-    return keywords
+    os.remove(lpath)
+    return { "keywords": keywords }
 
 @app.route('/api/uploadvideo', methods=['POST'])
 def temp():

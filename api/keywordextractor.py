@@ -9,8 +9,8 @@ class Keywordextractor:
 	Takes in the name of a pdf in the current directory
 	and prints a ranked list of keywords.
 	'''
-	def __init__(self, file, directory = "notes"):
-		self.file = file
+	def __init__(self, path, directory = "notes"):
+		self.path = path
 		self.directory = directory
 
 	'''
@@ -40,7 +40,7 @@ class Keywordextractor:
 		r = Rake(min_length=1, max_length=3)
 
 		# get text from pdf
-		s = pdf.extract_text(file)
+		s = pdf.extract_text(self.path)
 
 		# cleaning extracted text
 		s = "".join(filter(lambda x: x.isalpha() or x.isspace(), s))
@@ -54,5 +54,5 @@ class Keywordextractor:
 
 if __name__ == '__main__':
     file = sys.argv[1]
-    keywordextractor = Keywordextractor(file)
+    keywordextractor = Keywordextractor(path)
     print(keywordextractor.get_keywords())
