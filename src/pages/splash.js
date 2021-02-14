@@ -21,7 +21,7 @@ export default function SplashPage() {
                     Get Started
                 </Button>
             </a>
-           
+
         </FadeIn>
         </div>
     </Layout>

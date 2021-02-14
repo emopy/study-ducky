@@ -26,7 +26,7 @@ class Video2PDF:
                 name = self.random_string(16)
                 self.pdfifier.makePDF(self.quilt, name)
 
-                filename = name + ".pdf"
+                filename = name
 
                 if(os.path.isdir("audio_segments")):
                     shutil.rmtree("audio_segments")

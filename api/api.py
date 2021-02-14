@@ -27,8 +27,6 @@ def get_current_time():
 def handleUploadFile():
     data = dict()
     for key, val in request.form.items():
-        print("key:", key)
-        print("val:", val)
         data[key] = val
 
     if('file' not in request.files):
@@ -36,7 +34,7 @@ def handleUploadFile():
 
     f = request.files['file']
 
-    lpath = '.' + os.sep + str(hash(f))
+    lpath = '.' + os.sep + str(hash(f)) + ".pdf"
     f.save(lpath)
 
     note = Note(data['title'], data['description'], data['school'], 0, True, False, False, data['fileurl'], lpath)
@@ -48,8 +46,6 @@ def handleUploadFile():
 def handleUploadVideo():
     data = dict()
     for key, val in request.form.items():
-        print("key:", key)
-        print("val:", val)
         data[key] = val
 
     if('file' not in request.files):
@@ -57,10 +53,10 @@ def handleUploadVideo():
 
     f = request.files['file']
 
-    lpath = '.' + os.sep + str(hash(f))
+    lpath = '.' + os.sep + str(hash(f)) + ".mp4"
     f.save(lpath)
 
-    note = Note(data['title'], data['description'], data['school'], 0, True, False, False, data['fileurl'], lpath)
+    note = Note(data['title'], data['description'], data['school'], 0, False, True, False, data['fileurl'], lpath)
 
     os.remove(lpath)
     return { "status": "SUCCESS" }
