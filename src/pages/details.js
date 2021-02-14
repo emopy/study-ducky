@@ -18,6 +18,8 @@ class Details extends React.Component {
     }
 
     render() {
+        console.log(this.props);
+
         return (
             <Layout>
                 <div id="uploadPage" style={{
@@ -39,7 +41,7 @@ class Details extends React.Component {
                     keywords="keywords"
                     url="url"
                 />
-                
+
                 </FadeIn></Container>
                 </div>
             </Layout>

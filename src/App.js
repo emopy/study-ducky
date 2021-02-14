@@ -45,7 +45,7 @@ function App() {
             <Route path="/upload-lectures">
               <UploadLecturesForm />
             </Route>
-            <Route path="/details">
+            <Route path="/details/:docId">
               <DetailsPage />
             </Route>
           </Switch>
