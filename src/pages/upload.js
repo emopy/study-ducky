@@ -8,6 +8,9 @@ import Navbar from '../components/navbar'
 import FadeIn from 'react-fade-in';
 import bgImg from '../assets/bg-2.png'
 
+import { Button } from 'evergreen-ui'
+
+
 import './styles/upload.css'
 
 import UploadNotesForm from "../components/UploadNotesForm";
@@ -46,10 +49,23 @@ class UploadPage extends React.Component {
                 <Navbar/>
                 <Container><FadeIn>
 
-                <h1><Emoji symbol="📁"/> Upload Files</h1><br/>
+                <h1><Emoji symbol="📁"/> Upload File</h1><br/>
 
                 <p><a onClick = {() => { this.clickButton1(); }}> Upload Notes </a></p>
                 <p><a onClick = {() => { this.clickButton2(); }}> Upload Lecture </a></p>
+
+
+                <div>
+
+
+                <Button
+                    height={40}
+                    float={'center'}
+                    marginLeft={0}
+                    fontFamily={'Avenir'} >
+                    Upload Notes
+                </Button>
+                </div>
 
                 <div>
                 {(this.state.tabClicked == 1) && (
