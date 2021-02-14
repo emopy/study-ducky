@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import './styles/file-card.css'
 import PDFViewer from "./pdfviewer";
 
+import Emoji from './emoji'
+
 class FileCard extends React.Component {
 
     constructor(props) {
@@ -15,7 +17,7 @@ class FileCard extends React.Component {
           <div className='fc-container'>
               <div className="card-header">
                   <span>{this.props.school}</span>
-                  <span style={{float:'right'}}>[{this.props.relevance}]</span>
+                  <span style={{float:'right'}}><b>{this.props.relevance} <Emoji symbol="🌟"/></b></span>
               </div>
               <div style={{height:'120px', overflow:'hidden', marginBottom: '10px'}}>
                 <Link style={{margin: "auto"}}

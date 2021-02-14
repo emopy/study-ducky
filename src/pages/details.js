@@ -179,7 +179,7 @@ class Details extends React.Component {
 
                         <p><b>School</b>: {this.state.data.school}</p>
                         <p><b>Description</b>: {this.state.data.description}</p>
-                        <p><b>Popularity</b>: {this.state.data.relevance}</p>
+                        <p><b>Popularity</b>: {this.state.data.relevance} <Emoji symbol="🌟"/></p>
                         <div>
                             <Button
                                 variant="success"
