@@ -27,13 +27,13 @@ class PDFifier:
             stitcher.stitch()
             self.quilt = stitcher.get_quilt()
 
-        def makePDF(self, quilt):
+        def makePDF(self, quilt, hash):
             # Runs the stitcher
             styles = getSampleStyleSheet()
             styles.add(ParagraphStyle(name='Left', leading=24, alignment=TA_LEFT))
             styles.add(ParagraphStyle(name='Center', leading=24, alignment=TA_CENTER))
 
-            doc = SimpleDocTemplate("notes.pdf",pagesize=letter,
+            doc = SimpleDocTemplate(hash + ".pdf",pagesize=letter,
                         rightMargin=72,leftMargin=72,
                         topMargin=72,bottomMargin=18)
 
