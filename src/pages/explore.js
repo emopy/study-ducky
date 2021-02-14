@@ -89,7 +89,7 @@ export default function ExplorePage() {
         >  
         <Container><FadeIn>
 
-        <h2>Explore Notes <Emoji symbol="✏️"/></h2><br/>
+        <h1>Explore Notes <Emoji symbol="✏️"/></h1><br/>
         <div>
             <div style={{
                 float: 'left',
@@ -100,10 +100,16 @@ export default function ExplorePage() {
                 <SearchInput placeholder="Search for notes..."
                     height={40}
                     width='100%'
+                    fontFamily={'Avenir'}
                 />
             </div>
             
-            <Button height={40} float={'left'} marginLeft={0}>
+            <Button 
+                height={40} 
+                float={'left'} 
+                marginLeft={0}
+                fontFamily={'Avenir'}
+            >
                 Search
             </Button>
         </div>

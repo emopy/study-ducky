@@ -19,11 +19,16 @@ export default function SplashPage() {
             backgroundPosition: 'center'
         }}>
         <FadeIn>
-            <img src={duckImg} style={{height: '200px'}}/>
+            <img id='duck-float' src={duckImg} style={{height: '200px'}}/>
             <h1>Study Ducky</h1>
-            <h2>Note sharing made easy.</h2>
+            <h2 style={{ color: '#5c7370'}}>Note sharing made easy.</h2>
             <a href="/explore" style={{textDecoration:'none'}}>
-                <Button height={40} marginTop={20}>
+                <Button 
+                    height={60} 
+                    marginTop={20}
+                    fontSize={18}
+                    fontFamily={'Avenir'}
+                >
                     Get Started
                 </Button>
             </a>

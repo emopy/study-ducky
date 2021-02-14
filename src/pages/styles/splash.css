@@ -9,3 +9,15 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
 }
+
+
+@keyframes float {
+    0% { transform: translatey(0px); }
+    50% { transform: translatey(-20px); }
+    100% { transform: translatey(0px); }
+}
+  
+#duck-float {
+    transform: translatey(0px);
+      animation: float 4s ease-in-out infinite;
+}
