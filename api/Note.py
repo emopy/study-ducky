@@ -2,6 +2,7 @@ import json
 from keywordextractor import Keywordextractor
 from video2pdf import Video2PDF
 from firebase import add, upload_pdf
+import os
 
 class Note:
     def __init__(self, title, description, school, courseLevel, isNote, isVideo, isProblem, url, path):
@@ -46,6 +47,9 @@ class Note:
         pdf_url = upload_pdf(pdf_path, filename, "notes")
 
         self.data['pdfurl'] = pdf_url
+
+        if(os.path.isfile(pdf_path)):
+            os.remove(pdf_path)
         return keywords
 
     def writtenKeywordGenerator(self, path):

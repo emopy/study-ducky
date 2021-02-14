@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { SearchInput, Button } from 'evergreen-ui'
 import Container from '../components/container'
@@ -7,18 +7,83 @@ import Emoji from '../components/emoji'
 import FileCard from '../components/file-card'
 
 import FadeIn from 'react-fade-in';
+import { db } from '../firebase';
 
 
 export default function ExplorePage() {
+  const [notes, setNotes] = useState([]);
+  const [lectures, setLectures] = useState([]);
+
+  useEffect(() => {
+    db.collection("notes")
+      .get()
+      .then((querySnapshot) => {
+          let data = [];
+          querySnapshot.forEach((doc) => {
+              let temp = doc.data();
+              temp['docId'] = doc.id;
+              data.push(temp);
+              setNotes(data);
+              console.log(doc.id, " => ", doc.data());
+          });
+      })
+      .catch((error) => {
+          console.log("Error getting documents: ", error);
+      });
+
+    db.collection("notes")
+        .onSnapshot((querySnapshot) => {
+          let data = [];
+            querySnapshot.forEach((doc) => {
+              let temp = doc.data();
+              temp['docId'] = doc.id;
+              data.push(temp);
+              setNotes(data);
+
+              console.log(doc.id, " => ", doc.data());
+            });
+        });
+
+    db.collection("lectures")
+      .get()
+      .then((querySnapshot) => {
+          let data = [];
+          querySnapshot.forEach((doc) => {
+              let temp = doc.data();
+              temp['docId'] = doc.id;
+              data.push(temp);
+              setNotes(data);
+              console.log(doc.id, " => ", doc.data());
+          });
+      })
+      .catch((error) => {
+          console.log("Error getting documents: ", error);
+      });
+
+    db.collection("lectures")
+        .onSnapshot((querySnapshot) => {
+          let data = [];
+            querySnapshot.forEach((doc) => {
+              let temp = doc.data();
+              temp['docId'] = doc.id;
+              data.push(temp);
+              setNotes(data);
+
+              console.log(doc.id, " => ", doc.data());
+            });
+        });
+  }, []);
+
+  console.log(notes);
 
   return (
     <Layout>
         <Container><FadeIn>
 
-            
+
         <h2>Explore Notes <Emoji>✏️</Emoji></h2>
-        <SearchInput placeholder="Search for notes..." 
-            height={40} 
+        <SearchInput placeholder="Search for notes..."
+            height={40}
             marginBottom={40}
             width="100%"
         />
@@ -30,40 +95,40 @@ export default function ExplorePage() {
 
         <div>
 
-        <FileCard 
-            title="title here" 
+        <FileCard
+            title="title here"
             description="lorem ipsum"
         />
 
-        <FileCard 
-            title="title here" 
+        <FileCard
+            title="title here"
             description="lorem ipsum"
         />
 
-        <FileCard 
-            title="title here" 
+        <FileCard
+            title="title here"
             description="lorem ipsum"
         />
 
-        <FileCard 
-            title="title here" 
+        <FileCard
+            title="title here"
             description="lorem ipsum"
         />
 
-        <FileCard 
-            title="title here" 
+        <FileCard
+            title="title here"
             description="lorem ipsum"
         />
 
-        <FileCard 
-            title="title here" 
+        <FileCard
+            title="title here"
             description="lorem ipsum"
         />
 
         </div>
 
         <div style={{height: '100px'}}></div>
-        
+
         </FadeIn></Container>
     </Layout>
   );

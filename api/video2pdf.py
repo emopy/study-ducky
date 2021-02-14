@@ -28,6 +28,8 @@ class Video2PDF:
 
                 filename = name
 
+                if(os.path.isfile(path + ".mp3")):
+                    os.remove(path + ".mp3")
                 if(os.path.isdir("audio_segments")):
                     shutil.rmtree("audio_segments")
                 if(os.path.isdir("slides")):

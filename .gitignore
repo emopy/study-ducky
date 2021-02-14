@@ -243,3 +243,4 @@ api/__pycache__
 
 api/*.mp3
 api/*.mp4
+api/*.pdf
