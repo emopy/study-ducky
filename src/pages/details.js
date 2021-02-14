@@ -7,6 +7,7 @@ import Emoji from '../components/emoji'
 import Navbar from '../components/navbar'
 import FileDetails from '../components/file-details'
 import PDFViewer from '../components/pdfviewer'
+import { db } from '../firebase'
 
 import { Button } from 'evergreen-ui'
 
@@ -20,6 +21,106 @@ class Details extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleUpvote = this.handleUpvote.bind(this);
+        this.state = {
+          data: {}
+        }
+        this.unsubRef = null;
+    }
+
+    componentDidMount() {
+      let state = this.props.location.state;
+      if(state) {
+        let temp = state.data;
+        if(temp.isNote) {
+          this.unsubRef = db.collection("notes").doc(temp.docId)
+              .onSnapshot((doc) => {
+                this.setState({ data: doc.data() })
+              });
+
+        }
+
+        if(temp.isVideo) {
+          this.unsubRef = db.collection("videos").doc(temp.docId)
+              .onSnapshot((doc) => {
+                this.setState({ data: doc.data() })
+              });
+
+        }
+
+      }
+    }
+
+    componentWillUnmount() {
+      if(this.unsubRef) {
+        this.unsubRef();
+      }
+    }
+
+    handleUpvote = async (event, isNote, isVideo, docId) => {
+      if(isNote) {
+        let noteRef = await db.collection('notes').doc(docId);
+        await noteRef.get()
+          .then((doc) => {
+            if (doc.exists) {
+                let data = doc.data()
+                noteRef.set({
+                  relevance: data.relevance + 1
+                }, { merge: true })
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        })
+      }
+      if(isVideo) {
+        let videoRef = await db.collection('videos').doc(docId);
+        await videoRef.get()
+          .then((doc) => {
+            if (doc.exists) {
+                let data = doc.data()
+                videoRef.set({
+                  relevance: data.relevance + 1
+                }, { merge: true })
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        })
+      }
+    }
+
+    handleDownvote = async (event, isNote, isVideo, docId) => {
+      if(isNote) {
+        let noteRef = await db.collection('notes').doc(docId);
+        await noteRef.get()
+          .then((doc) => {
+            if (doc.exists) {
+                let data = doc.data()
+                noteRef.set({
+                  relevance: data.relevance - 1
+                }, { merge: true })
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        })
+      }
+      if(isVideo) {
+        let videoRef = await db.collection('videos').doc(docId);
+        await videoRef.get()
+          .then((doc) => {
+            if (doc.exists) {
+                let data = doc.data()
+                videoRef.set({
+                  relevance: data.relevance - 1
+                }, { merge: true })
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        })
+      }
     }
 
     render() {
@@ -46,16 +147,20 @@ class Details extends React.Component {
 
                 <h1><Emoji symbol="✏️"/> {data.title}</h1><br/>
 
-                
+
                 <Button
                     height={40}
-                    fontFamily={'Avenir'} >
+                    fontFamily={'Avenir'}
+                    onClick={e => this.handleUpvote(e, data.isNote, data.isVideo, data.docId)}
+                >
                     Upvote
                 </Button>
 
                 <Button
                     height={40}
-                    fontFamily={'Avenir'} >
+                    fontFamily={'Avenir'}
+                    onClick={e => this.handleDownvote(e, data.isNote, data.isVideo, data.docId)}
+                >
                     Downvote
                 </Button>
 
@@ -71,11 +176,12 @@ class Details extends React.Component {
                 </div>
 
                 <FileDetails
-                    title={data.title}
-                    school={data.school}
-                    description={data.description}
-                    keywords={data.keywords}
-                    url={data.pdfurl}
+                    title={this.state.data.name}
+                    school={this.state.data.school}
+                    description={this.state.data.description}
+                    keywords={this.state.data.keywords}
+                    url={this.state.data.pdfurl}
+                    relevance={this.state.data.relevance}
                 />
 
                 </FadeIn></Container>

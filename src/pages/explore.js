@@ -219,6 +219,11 @@ export default function ExplorePage() {
               return (
                 <FileCard
                   title={item.name}
+                  docId={item.docId}
+                  isVideo={item.isVideo}
+                  isNote={item.isNote}
+                  isProblem={item.isProblem}
+                  relevance={item.relevance}
                   description={item.description}
                   school={item.school}
                   keywords={item.keywords}

@@ -16,6 +16,7 @@ class FileDetails extends React.Component {
                 <p>Description {this.props.description}</p>
                 <p>Keywords {this.props.keywords}</p>
                 <p>URL {this.props.url}</p>
+                <p>Relevance {this.props.relevance}</p>
             </div>
         );
     }
