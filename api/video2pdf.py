@@ -15,3 +15,8 @@ class Video2PDF:
 		self.stitcher.stitch()
 		self.pdfifier = PDFifier()
 		self.quilt = self.stitcher.get_quilt()
+
+		name = hash(os.path.basename(path))
+		self.pdfifier.makePDF(self.quilt, name)
+
+		return name
