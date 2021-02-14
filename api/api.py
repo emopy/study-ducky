@@ -3,6 +3,8 @@ import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from keywordextractor import Keywordextractor
+from video2pdf import Video2PDF
+from Note import Note
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 CORS(app)
@@ -33,17 +35,14 @@ def handleUploadFile():
         return {"status": "ERR_MISSING_FILE"}
 
     f = request.files['file']
+
     lpath = '.' + os.sep + str(hash(f))
-
     f.save(lpath)
-    data['file'] = f
 
-    keywordextractor = Keywordextractor(lpath)
-    keywords = keywordextractor.get_keywords()
-    print(keywords)
+    note = Note(data['title'], data['description'], data['school'], 0, True, False, False, data['fileurl'], lpath)
 
     os.remove(lpath)
-    return { "keywords": keywords }
+    return { "status": "SUCCESS" }
 
 @app.route('/api/uploadvideo', methods=['POST'])
 def handleUploadVideo():
@@ -57,10 +56,11 @@ def handleUploadVideo():
         return {"status": "ERR_MISSING_FILE"}
 
     f = request.files['file']
-    lpath = '.' + os.sep + str(hash(f))
 
+    lpath = '.' + os.sep + str(hash(f))
     f.save(lpath)
-    data['file'] = f
+
+    note = Note(data['title'], data['description'], data['school'], 0, True, False, False, data['fileurl'], lpath)
 
     os.remove(lpath)
-    return { "keywords": keywords }
+    return { "status": "SUCCESS" }

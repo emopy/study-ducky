@@ -1,44 +1,52 @@
 import json
 from keywordextractor import Keywordextractor
 from video2pdf import Video2PDF
+from firebase import add
 
 class Note:
-    def __init__(self, documentID, name, description, school, courseLevel, isNote, isVideo, isProblem):
+    def __init__(self, title, description, school, courseLevel, isNote, isVideo, isProblem, url, path):
         self.data = {
-            "documentID" : documentID,
-            "name" : name,
+            "name" : title,
             "description" : description,
             "school" : school,
             "courseLevel" : courseLevel,
             "isNote" : isNote,
             "isVideo" : isVideo,
             "isProblem" : isProblem,
-            "relevance" : 0
+            "relevance" : 0,
+            "url": url
         }
 
         if self.data["isVideo"]:
-            self.data["keywords"] = self.videoKeywordGenerator(documentID)
+            self.data["keywords"] = self.videoKeywordGenerator(path)
         elif self.data["isNote"]:
-            self.data["keywords"] = self.writtenKeywordGenerator(documentID)
+            self.data["keywords"] = self.writtenKeywordGenerator(path)
         else:
             self.data["keywords"] = []
 
-    def videoKeywordGenerator(self, documentID):
-        # MATHEW HOW TO GO FROM DOCUMENT ID -> PATH
-        path = documentID
+        if(isVideo):
+            add(self.data, "videos")
+        elif(isNote):
+            add(self.data, "notes")
+        else:
+            add(self.data, "problems")
+
+
+
+    def videoKeywordGenerator(self, path):
         pdf = Video2PDF()
-        pdf.startVideo(path)
+        filename = pdf.run(path)
 
         # code to upload note pdf and run new Note class on the written notes
+        k = Keywordextractor(path)
+        keywords = k.get_keywords()
 
-        keywords = []
         return keywords
 
-    def writtenKeywordGenerator(self, documentID):
-        # MATHEW HOW TO GO FROM DOCUMENT ID -> PATH
-        path = documentID
+    def writtenKeywordGenerator(self, path):
         k = Keywordextractor(path)
-        return k.get_keywords()
+        keywords = k.get_keywords()
+        return keywords
 
     def toJSON(self):
         return json.dumps(self.data)
