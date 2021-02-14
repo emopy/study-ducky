@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from keywordextractor import Keywordextractor
 from video2pdf import Video2PDF
+from SearchKeyword import searchKeyword
 from Note import Note
 
 app = Flask(__name__, static_folder='../build', static_url_path='/')
