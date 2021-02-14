@@ -121,7 +121,25 @@ export default function ExplorePage() {
              data.push(temp);
          });
      })
+    await db.collection("notes").where("name", "==", text)
+     .get()
+     .then((querySnapshot) => {
+         querySnapshot.forEach((doc) => {
+             let temp = doc.data();
+             temp['docId'] = doc.id;
+             data.push(temp);
+         });
+     })
     await db.collection("videos").where("keywords", "array-contains", text)
+     .get()
+     .then((querySnapshot) => {
+         querySnapshot.forEach((doc) => {
+             let temp = doc.data();
+             temp['docId'] = doc.id;
+             data.push(temp);
+         });
+     })
+    await db.collection("videos").where("name", "==", text)
      .get()
      .then((querySnapshot) => {
          querySnapshot.forEach((doc) => {
