@@ -9,13 +9,14 @@ import AddPage from './pages/add'
 
 import UploadNotesForm from "./components/UploadNotesForm";
 import UploadLecturesForm from "./components/UploadLecturesForm";
+import './bootstrap.min.css';
 import './App.css';
 
 function App() {
 
   return (
     <div className="App">
-    
+
       <header className="App-header">
         <BrowserRouter>
           <Switch>

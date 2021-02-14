@@ -8,4 +8,7 @@
     color: #2E1F27;
 }
 
-
+.react-pdf__Page__svg {
+  border-radius: 12px;
+  margin: auto;
+}
