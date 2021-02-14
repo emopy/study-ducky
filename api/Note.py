@@ -1,4 +1,6 @@
 import json
+from keywordextractor import Keywordextractor
+from video2pdf import Video2PDF
 
 class Note:
     def __init__(self, documentID, name, description, school, courseLevel, isNote, isVideo, isProblem):
@@ -22,10 +24,21 @@ class Note:
             self.data["keywords"] = []
 
     def videoKeywordGenerator(self, documentID):
-        return 0
+        # MATHEW HOW TO GO FROM DOCUMENT ID -> PATH
+        path = documentID
+        pdf = Video2PDF()
+        pdf.startVideo(path)
+
+        # code to upload note pdf and run new Note class on the written notes
+
+        keywords = []
+        return keywords
 
     def writtenKeywordGenerator(self, documentID):
-        return 0
+        # MATHEW HOW TO GO FROM DOCUMENT ID -> PATH
+        path = documentID
+        k = Keywordextractor(path)
+        return k.get_keywords()
 
     def toJSON(self):
         return json.dumps(self.data)

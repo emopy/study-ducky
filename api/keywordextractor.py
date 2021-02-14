@@ -9,9 +9,8 @@ class Keywordextractor:
 	Takes in the name of a pdf in the current directory
 	and prints a ranked list of keywords.
 	'''
-	def __init__(self, path, directory = "notes"):
+	def __init__(self, path):
 		self.path = path
-		self.directory = directory
 
 	'''
 	Checks whether keyword phrase in wordlist is valid.
