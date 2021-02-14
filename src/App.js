@@ -4,7 +4,6 @@ import logo from './logo.svg';
 
 import SplashPage from './pages/splash'
 import ExplorePage from './pages/explore'
-import AddPage from './pages/add'
 
 import UploadNotesForm from "./components/UploadNotesForm";
 import UploadLecturesForm from "./components/UploadLecturesForm";
@@ -28,14 +27,6 @@ function App() {
                     <Link className="App-link" to="/explore">Explore</Link>
                 </div> */}
                 <ExplorePage/>
-            </Route>
-            <Route path="/add">
-                {/* <div>
-                    <Link className="App-link" to="/">Home</Link>
-                    &nbsp;| &nbsp;
-                    <Link className="App-link" to="/explore">Explore</Link>
-                </div> */}
-                <AddPage />
             </Route>
             <Route path="/upload-notes">
               <UploadNotesForm />
