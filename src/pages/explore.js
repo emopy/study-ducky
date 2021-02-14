@@ -44,7 +44,7 @@ export default function ExplorePage() {
             });
         });
 
-    db.collection("lectures")
+    db.collection("videos")
       .get()
       .then((querySnapshot) => {
           let data = [];
@@ -52,24 +52,38 @@ export default function ExplorePage() {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setNotes(data);
+              setLectures(data);
           });
       })
       .catch((error) => {
           console.log("Error getting documents: ", error);
       });
 
-    db.collection("lectures")
+    db.collection("videos")
         .onSnapshot((querySnapshot) => {
           let data = [];
             querySnapshot.forEach((doc) => {
               let temp = doc.data();
               temp['docId'] = doc.id;
               data.push(temp);
-              setNotes(data);
+              setLectures(data);
             });
         });
   }, []);
+
+  function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        x = a[i];
+        a[i] = a[j];
+        a[j] = x;
+    }
+    return a;
+  }
+
+  let merged = notes.concat(lectures)
+  merged = shuffle(merged);
 
   return (
     <Layout>
@@ -95,69 +109,71 @@ export default function ExplorePage() {
                     fontFamily={'Avenir'}
                 />
             </div>
-            
-            <Button 
-                height={40} 
-                float={'left'} 
+
+            <Button
+                height={40}
+                float={'left'}
                 marginLeft={0}
                 fontFamily={'Avenir'}
             >
                 Search
             </Button>
         </div>
-        
+
 
         <div style={{height: '20px'}}/>
 
-        <div>
-          {notes.map(item => {
-            let pdfurl = null;
-            if(item.isVideo) {
-              pdfurl = item.pdfurl;
-            } else if(item.isNote) {
-              pdfurl = item.url;
-            }
-            console.log(item);
-            return (
+        <div className="">
+          <div className="">
+            {merged.map(item => {
+              let pdfurl = null;
+              if(item.isVideo) {
+                pdfurl = item.pdfurl;
+              } else if(item.isNote) {
+                pdfurl = item.url;
+              }
+              console.log(item);
+              return (
+                <FileCard
+                  title={item.name}
+                  description={item.description}
+                  school={item.school}
+                  pdfurl={pdfurl}
+                />
+              )
+            })}
+
               <FileCard
-                title={item.name}
-                description={item.description}
-                school={item.school}
-                pdfurl={pdfurl}
+                  title="title here"
+                  description="lorem ipsum"
               />
-            )
-          })}
 
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
+              <FileCard
+                  title="title here"
+                  description="lorem ipsum"
+              />
 
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
+              <FileCard
+                  title="title here"
+                  description="lorem ipsum"
+              />
 
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
+              <FileCard
+                  title="title here"
+                  description="lorem ipsum"
+              />
 
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
+              <FileCard
+                  title="title here"
+                  description="lorem ipsum"
+              />
 
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
+              <FileCard
+                  title="title here"
+                  description="lorem ipsum"
+              />
 
-            <FileCard
-                title="title here"
-                description="lorem ipsum"
-            />
-
+          </div>
         </div>
 
         <div style={{height: '100px'}}/>
