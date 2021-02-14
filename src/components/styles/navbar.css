@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0px;
     margin-bottom: 50px;
+    align-items: left;
 }
 
 .navbar li {

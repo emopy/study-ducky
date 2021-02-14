@@ -103,7 +103,7 @@ const UploadLecturesForm = (props) => {
         borderRadius: '5px',
         margin: '0px'
     }}>
-    <h2>Upload Lecture</h2>
+    <h2>Upload Lecture</h2><br/>
       <Form onSubmit={handleSubmit} >
         <Form.Group controlId="exampleForm.ControlInput1">
           <Form.Label>Title</Form.Label>
