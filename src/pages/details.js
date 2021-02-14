@@ -20,7 +20,7 @@ class Details extends React.Component {
     render() {
         return (
             <Layout>
-                <div id="uploadPage" style={{
+                <div id="detailsPage" style={{
                     backgroundImage: `url(${bgImg})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',

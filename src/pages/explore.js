@@ -162,7 +162,7 @@ export default function ExplorePage() {
         <Navbar/>
         <Container><FadeIn>
 
-        <h1>Explore Notes <Emoji symbol="✏️"/></h1><br/>
+        <h1><Emoji symbol="🗺️"/> Explore Notes</h1><br/>
         <div style={{width:'100%', height: '60px'}}>
             <div style={{
                 float: 'left',
