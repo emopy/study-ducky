@@ -36,7 +36,7 @@ export default function ExplorePage() {
           console.log("Error getting documents: ", error);
       });
 
-    db.collection("notes")
+    let notesUnsubscribe = db.collection("notes")
         .onSnapshot((querySnapshot) => {
           let data = [];
             querySnapshot.forEach((doc) => {
@@ -62,7 +62,7 @@ export default function ExplorePage() {
           console.log("Error getting documents: ", error);
       });
 
-    db.collection("videos")
+    let lecturesUnsubscribe = db.collection("videos")
         .onSnapshot((querySnapshot) => {
           let data = [];
             querySnapshot.forEach((doc) => {
@@ -72,6 +72,10 @@ export default function ExplorePage() {
               setLectures(data);
             });
         });
+    return () => {
+      notesUnsubscribe();
+      lecturesUnsubscribe();
+    }
   }, []);
 
 //   useEffect(() => {
