@@ -3,9 +3,9 @@ import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import { storage } from "../firebase";
 
-const FLASK_ENDPOINT = 'http://127.0.0.1:5000/api/uploadpdf';
+const FLASK_ENDPOINT = 'http://127.0.0.1:5000/api/uploadvideo';
 
-const UploadNotesForm = (props) => {
+const UploadLecturesForm = (props) => {
   const [filename, setFilename] = useState("");
   const [title, setTitle] = useState("");
   const [school, setSchool] = useState("");
@@ -34,7 +34,7 @@ const UploadNotesForm = (props) => {
 
 
     let storageRef = storage.ref();
-    let fileRef = storageRef.child(`notes/${filename}`)
+    let fileRef = storageRef.child(`videos/${filename}`)
 
     let uploadTask = fileRef.put(dataFile);
     uploadTask.on('state_changed', // or 'state_changed'
@@ -135,7 +135,7 @@ const UploadNotesForm = (props) => {
           <Form.File
               id="custom-file"
               label={filename}
-              accept="application/pdf"
+              accept="video/mp4"
               onChange={e => setFilename(e.target.files[0].name)}
               custom
             />
@@ -148,4 +148,4 @@ const UploadNotesForm = (props) => {
   )
 }
 
-export default UploadNotesForm;
+export default UploadLecturesForm;
