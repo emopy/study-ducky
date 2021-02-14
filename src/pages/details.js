@@ -8,7 +8,8 @@ import Navbar from '../components/navbar'
 import PDFViewer from '../components/pdfviewer'
 import { db } from '../firebase'
 
-import { Button, Badge } from 'evergreen-ui'
+import { Button, Badge, ArrowRightIcon, ArrowLeftIcon } from 'evergreen-ui'
+import { Row, Col } from 'react-bootstrap';
 
 
 import FadeIn from 'react-fade-in';
@@ -143,57 +144,93 @@ class Details extends React.Component {
                 <Navbar/>
                 <Container><FadeIn>
 
-                <h1><Emoji symbol="✏️"/> {data.title}</h1><br/>
+                <Row style={{marginBottom: '30px'}}>
+                    <Link to='/explore'>
+                        <Button 
+                            iconBefore={ArrowLeftIcon} 
+                            height={40}
+                            fontSize={16}
+                            appearance={'minimal'}>
+                            <span>Back to Explore</span>
+                        </Button>
+                    </Link>   
+                </Row>
 
-                <Badge color="green">{this.state.data.school}</Badge>
+                <Row style={{marginBottom: '20px'}}>
+                    <h1 style={{float: 'left'}}><Emoji symbol="✏️"/> {data.title}</h1>
+                </Row>
 
-                <p>{this.state.data.description}</p>
+                <Row>
+                    <Col xs={12} md={4}>
+                        <div style={{height:'auto', overflow:'hidden'}}>
+                            <a style={{margin: "auto"}}
+                                    to={data.pdfurl}
+                                    className="pdf-anchor d-flex justify-content-center pdf-preview">
+                                <PDFViewer
+                                pdfURL={data.pdfurl}
+                                />
+                            </a>
+                        </div>
+                    </Col>
 
-                {this.state.data.pdfurl}
-                {this.state.data.relevance}
+                    <Col xs={12} md={8}>
+
+                        <p><b>School</b>: {this.state.data.school}</p>
+                        <p><b>Description</b>: {this.state.data.description}</p>
+                        <p><b>Popularity</b>: {this.state.data.relevance}</p>
+                        <div>
+                            <Button
+                                intent="success"
+                                height={40}
+                                fontFamily={'Avenir'}
+                                float={'center'}
+                                marginRight={'1vw'}
+                                appearance="primary"
+                                onClick={e => this.handleUpvote(e, data.isNote, data.isVideo, data.docId)} >
+                                Upvote
+                            </Button>
+
+                            <Button
+                                intent="danger"
+                                height={40}
+                                fontFamily={'Avenir'}
+                                float={'center'}
+                                appearance="primary"
+                                onClick={e => this.handleDownvote(e, data.isNote, data.isVideo, data.docId)} >
+                                Downvote
+                            </Button>
+                        </div>
+
+                        <br/>
+
+                        <a href={ this.state.data.isVideo ? this.state.data.pdfurl : this.state.data.url } target="_blank" rel="noopener noreferrer">
+                            <Button
+                                height={50}
+                                fontSize={18}
+                                appearance="primary"
+                                fontFamily={'Avenir'} >
+                                View Notes &rarr;
+                            </Button>
+                        </a>
+                        
+                    </Col>
+                </Row>
+
+
                 
-                <div style={{height:'auto', overflow:'hidden'}}>
-                  <a style={{margin: "auto"}}
-                        to={data.pdfurl}
-                        className="pdf-anchor d-flex justify-content-center pdf-preview"
-                  >
-                    <PDFViewer
-                      pdfURL={data.pdfurl}
-                    />
-                  </a>
-                </div>
-
-                <div>
-                    <Button
-                        height={40}
-                        fontFamily={'Avenir'}
-                        float={'center'}
-                        marginRight={20}
-                        onClick={e => this.handleUpvote(e, data.isNote, data.isVideo, data.docId)} >
-                        Upvote
-                    </Button>
-
-                    <Button
-                        height={40}
-                        fontFamily={'Avenir'}
-                        float={'center'}
-                        onClick={e => this.handleDownvote(e, data.isNote, data.isVideo, data.docId)} >
-                        Downvote
-                    </Button>
-                </div>
-
-                <div>
-                    <h3>Tags</h3>
-                    <div style={{
-                        maxHeight: '300px',
-                        overflow: 'scroll'
-                    }}>
-                    {this.state.data.keywords && this.state.data.keywords.map(keyword => {
-                        return <Badge color="teal" marginRight={8}>{keyword}</Badge>
-                    })}
+                <Row style={{marginTop: '40px'}}>
+                    <div>
+                        <h3>Tags</h3>
+                        <div style={{
+                            maxHeight: '200px',
+                            overflow: 'scroll'
+                        }}>
+                        {this.state.data.keywords && this.state.data.keywords.map(keyword => {
+                            return <Badge color="teal" marginRight={8}>{keyword}</Badge>
+                        })}
+                        </div>
                     </div>
-                </div>
-                
+                </Row>
 
                 </FadeIn></Container>
                 </div>

@@ -151,7 +151,7 @@ const UploadLecturesForm = (props) => {
               custom
             />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="info" size="lg" type="submit">
           Submit
         </Button>
       </Form>

@@ -215,6 +215,7 @@ export default function ExplorePage() {
                 float={'left'}
                 marginLeft={0}
                 fontFamily={'Avenir'}
+                appearance="primary"
                 onClick={e => onSearchClick(e)}
             >
                 Search
