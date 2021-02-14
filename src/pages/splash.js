@@ -19,21 +19,30 @@ export default function SplashPage() {
             backgroundSize: 'cover',
             backgroundPosition: 'center'
         }}>
-        <FadeIn>
-            <img id='duck-float' src={duckImg} style={{height: '200px'}}/>
-            <h1>Study Ducky</h1>
-            <h2 style={{ color: '#5c7370'}}>Note sharing made easy.</h2>
-            <Link to="/explore" style={{textDecoration:'none'}}>
-                <Button
-                    height={60}
-                    marginTop={20}
-                    fontSize={18}
-                    fontFamily={'Avenir'}
-                >
-                    Get Started &rarr;
-                </Button>
-            </Link>
-        </FadeIn>
+        
+            <div>
+                <img id='duck-float' src={duckImg} style={{
+                    height: '200px', marginBottom: '30px', float: 'left', display: 'inline-block'
+                }}/>
+            </div>
+
+            <div style={{ float: 'right', display: 'inline-block' }}>
+            <FadeIn>
+                <h1>Study Ducky</h1>
+                <h2 style={{ color: '#5c7370'}}>Note sharing made easy.</h2>
+                <Link to="/explore" style={{textDecoration:'none'}}>
+                    <Button
+                        height={60}
+                        marginTop={20}
+                        fontSize={18}
+                        fontFamily={'Avenir'}
+                    >
+                        Get Started &rarr;
+                    </Button>
+                </Link>
+                </FadeIn>
+            </div>
+        
         </div>
     </Layout>
   );

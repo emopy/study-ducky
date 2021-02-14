@@ -10,8 +10,10 @@ export default function Navbar() {
     return (
     <ul className="navbar">
         <li className="navbar-left-link"><Link to="/"><img src={logoImg} style={{height: '100%'}}/></Link></li>
-        <li className="navbar-right-link"><Link to="/upload">Upload</Link></li>
-        <li className="navbar-right-link"><Link to="/explore">Explore</Link></li>
+        <div>
+            <li className="navbar-right-link"><Link to="/upload">Upload</Link></li>
+            <li className="navbar-right-link"><Link to="/explore">Explore</Link></li>
+        </div>
     </ul>
     );
 
